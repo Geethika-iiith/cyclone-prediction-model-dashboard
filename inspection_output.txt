@@ -1,0 +1,94 @@
+=== ml_rainfall_features.csv ===
+Columns: ['date', 'temperature_2m_max', 'temperature_2m_min', 'temperature_2m_mean', 'rain_sum', 'precipitation_sum', 'precipitation_hours', 'windspeed_10m_max', 'windgusts_10m_max', 'winddirection_10m_dominant', 'city', 'latitude', 'longitude', 'rain_lag_1d', 'rain_lag_3d', 'rain_lag_7d', 'wind_change', 'temp_change', 'month', 'is_cyclone_season']
+Sample:
+         date  temperature_2m_max  temperature_2m_min  temperature_2m_mean  rain_sum  precipitation_sum  precipitation_hours  windspeed_10m_max  windgusts_10m_max  winddirection_10m_dominant       city  latitude  longitude  rain_lag_1d  rain_lag_3d  rain_lag_7d  wind_change  temp_change  month  is_cyclone_season
+0  2019-01-01                33.7                21.8                 26.4       0.0                0.0                  0.0               21.6               42.5                          72  Mangalore   12.9141     74.856          NaN          NaN          NaN          NaN          NaN      1                  0
+1  2019-01-02                34.0                21.0                 25.8       0.0                0.0                  0.0               20.9               43.9                         110  Mangalore   12.9141     74.856          0.0          0.0          0.0         -0.7         -0.6      1                  0
+2  2019-01-03                32.5                20.5                 25.4       0.0                0.0                  0.0               19.7               43.9                          49  Mangalore   12.9141     74.856          0.0          0.0          0.0         -1.2         -0.4      1                  0
+
+=== ml_wind_features.csv ===
+Columns: ['SID', 'SEASON', 'NUMBER', 'BASIN', 'SUBBASIN', 'NAME', 'ISO_TIME', 'NATURE', 'LAT', 'LON', 'WMO_WIND', 'WMO_PRES', 'WMO_AGENCY', 'TRACK_TYPE', 'DIST2LAND', 'LANDFALL', 'IFLAG', 'USA_AGENCY', 'USA_ATCF_ID', 'USA_LAT', 'USA_LON', 'USA_RECORD', 'USA_STATUS', 'USA_WIND', 'USA_PRES', 'USA_SSHS', 'USA_R34_NE', 'USA_R34_SE', 'USA_R34_SW', 'USA_R34_NW', 'USA_R50_NE', 'USA_R50_SE', 'USA_R50_SW', 'USA_R50_NW', 'USA_R64_NE', 'USA_R64_SE', 'USA_R64_SW', 'USA_R64_NW', 'USA_POCI', 'USA_ROCI', 'USA_RMW', 'USA_EYE', 'TOKYO_LAT', 'TOKYO_LON', 'TOKYO_GRADE', 'TOKYO_WIND', 'TOKYO_PRES', 'TOKYO_R50_DIR', 'TOKYO_R50_LONG', 'TOKYO_R50_SHORT', 'TOKYO_R30_DIR', 'TOKYO_R30_LONG', 'TOKYO_R30_SHORT', 'TOKYO_LAND', 'CMA_LAT', 'CMA_LON', 'CMA_CAT', 'CMA_WIND', 'CMA_PRES', 'HKO_LAT', 'HKO_LON', 'HKO_CAT', 'HKO_WIND', 'HKO_PRES', 'NEWDELHI_LAT', 'NEWDELHI_LON', 'NEWDELHI_GRADE', 'NEWDELHI_WIND', 'NEWDELHI_PRES', 'NEWDELHI_CI', 'NEWDELHI_DP', 'NEWDELHI_POCI', 'REUNION_LAT', 'REUNION_LON', 'REUNION_TYPE', 'REUNION_WIND', 'REUNION_PRES', 'REUNION_TNUM', 'REUNION_CI', 'REUNION_RMW', 'REUNION_R34_NE', 'REUNION_R34_SE', 'REUNION_R34_SW', 'REUNION_R34_NW', 'REUNION_R50_NE', 'REUNION_R50_SE', 'REUNION_R50_SW', 'REUNION_R50_NW', 'REUNION_R64_NE', 'REUNION_R64_SE', 'REUNION_R64_SW', 'REUNION_R64_NW', 'BOM_LAT', 'BOM_LON', 'BOM_TYPE', 'BOM_WIND', 'BOM_PRES', 'BOM_TNUM', 'BOM_CI', 'BOM_RMW', 'BOM_R34_NE', 'BOM_R34_SE', 'BOM_R34_SW', 'BOM_R34_NW', 'BOM_R50_NE', 'BOM_R50_SE', 'BOM_R50_SW', 'BOM_R50_NW', 'BOM_R64_NE', 'BOM_R64_SE', 'BOM_R64_SW', 'BOM_R64_NW', 'BOM_ROCI', 'BOM_POCI', 'BOM_EYE', 'BOM_POS_METHOD', 'BOM_PRES_METHOD', 'NADI_LAT', 'NADI_LON', 'NADI_CAT', 'NADI_WIND', 'NADI_PRES', 'WELLINGTON_LAT', 'WELLINGTON_LON', 'WELLINGTON_WIND', 'WELLINGTON_PRES', 'DS824_LAT', 'DS824_LON', 'DS824_STAGE', 'DS824_WIND', 'DS824_PRES', 'TD9636_LAT', 'TD9636_LON', 'TD9636_STAGE', 'TD9636_WIND', 'TD9636_PRES', 'TD9635_LAT', 'TD9635_LON', 'TD9635_WIND', 'TD9635_PRES', 'TD9635_ROCI', 'NEUMANN_LAT', 'NEUMANN_LON', 'NEUMANN_CLASS', 'NEUMANN_WIND', 'NEUMANN_PRES', 'MLC_LAT', 'MLC_LON', 'MLC_CLASS', 'MLC_WIND', 'MLC_PRES', 'USA_GUST', 'BOM_GUST', 'BOM_GUST_PER', 'REUNION_GUST', 'REUNION_GUST_PER', 'USA_SEAHGT', 'USA_SEARAD_NE', 'USA_SEARAD_SE', 'USA_SEARAD_SW', 'USA_SEARAD_NW', 'STORM_SPEED', 'STORM_DIR', 'wind_knots', 'pressure_mb', 'wind_kmh', 'year', 'month', 'dist_to_land_km', 'imd_category', 'pressure_change', 'lat_change', 'lon_change', 'category_num']
+Sample:
+             SID  SEASON  NUMBER BASIN SUBBASIN   NAME             ISO_TIME NATURE      LAT      LON  WMO_WIND  WMO_PRES  WMO_AGENCY TRACK_TYPE  DIST2LAND  LANDFALL           IFLAG  USA_AGENCY USA_ATCF_ID  USA_LAT  USA_LON  USA_RECORD  USA_STATUS  USA_WIND  USA_PRES  USA_SSHS  USA_R34_NE  USA_R34_SE  USA_R34_SW  USA_R34_NW  USA_R50_NE  USA_R50_SE  USA_R50_SW  USA_R50_NW  USA_R64_NE  USA_R64_SE  USA_R64_SW  USA_R64_NW  USA_POCI  USA_ROCI  USA_RMW  USA_EYE  TOKYO_LAT  TOKYO_LON  TOKYO_GRADE  TOKYO_WIND  TOKYO_PRES  TOKYO_R50_DIR  TOKYO_R50_LONG  TOKYO_R50_SHORT  TOKYO_R30_DIR  TOKYO_R30_LONG  TOKYO_R30_SHORT  TOKYO_LAND  CMA_LAT  CMA_LON  CMA_CAT  CMA_WIND  CMA_PRES  HKO_LAT  HKO_LON  HKO_CAT  HKO_WIND  HKO_PRES  NEWDELHI_LAT  NEWDELHI_LON  NEWDELHI_GRADE  NEWDELHI_WIND  NEWDELHI_PRES  NEWDELHI_CI  NEWDELHI_DP  NEWDELHI_POCI  REUNION_LAT  REUNION_LON  REUNION_TYPE  REUNION_WIND  REUNION_PRES  REUNION_TNUM  REUNION_CI  REUNION_RMW  REUNION_R34_NE  REUNION_R34_SE  REUNION_R34_SW  REUNION_R34_NW  REUNION_R50_NE  REUNION_R50_SE  REUNION_R50_SW  REUNION_R50_NW  REUNION_R64_NE  REUNION_R64_SE  REUNION_R64_SW  REUNION_R64_NW  BOM_LAT  BOM_LON  BOM_TYPE  BOM_WIND  BOM_PRES  BOM_TNUM  BOM_CI  BOM_RMW  BOM_R34_NE  BOM_R34_SE  BOM_R34_SW  BOM_R34_NW  BOM_R50_NE  BOM_R50_SE  BOM_R50_SW  BOM_R50_NW  BOM_R64_NE  BOM_R64_SE  BOM_R64_SW  BOM_R64_NW  BOM_ROCI  BOM_POCI  BOM_EYE  BOM_POS_METHOD  BOM_PRES_METHOD  NADI_LAT  NADI_LON  NADI_CAT  NADI_WIND  NADI_PRES  WELLINGTON_LAT  WELLINGTON_LON  WELLINGTON_WIND  WELLINGTON_PRES  DS824_LAT  DS824_LON DS824_STAGE  DS824_WIND  DS824_PRES  TD9636_LAT  TD9636_LON  TD9636_STAGE  TD9636_WIND  TD9636_PRES  TD9635_LAT  TD9635_LON  TD9635_WIND  TD9635_PRES  TD9635_ROCI  NEUMANN_LAT  NEUMANN_LON  NEUMANN_CLASS  NEUMANN_WIND  NEUMANN_PRES  MLC_LAT  MLC_LON  MLC_CLASS  MLC_WIND  MLC_PRES  USA_GUST  BOM_GUST  BOM_GUST_PER  REUNION_GUST  REUNION_GUST_PER  USA_SEAHGT  USA_SEARAD_NE  USA_SEARAD_SE  USA_SEARAD_SW  USA_SEARAD_NW  STORM_SPEED  STORM_DIR  wind_knots  pressure_mb  wind_kmh  year  month  dist_to_land_km imd_category  pressure_change  lat_change  lon_change  category_num
+0  1970324N05143    1970     151    NI       BB   RUTH  1970-11-29 12:00:00     TS   9.4000  99.8800       NaN       NaN         NaN       main         24      22.0  _OO_______O___         NaN         NaN      NaN      NaN         NaN         NaN       NaN       NaN        -5         NaN         NaN         NaN         NaN         NaN         NaN         NaN         NaN         NaN         NaN         NaN         NaN       NaN       NaN      NaN      NaN     9.3000    99.8000          2.0         NaN      1002.0            0.0             NaN              NaN            0.0             NaN              NaN         0.0   9.6000   100.00      0.0      19.0    1002.0      NaN      NaN      NaN       NaN       NaN           NaN           NaN             NaN            NaN            NaN          NaN          NaN            NaN          NaN          NaN           NaN           NaN           NaN           NaN         NaN          NaN             NaN             NaN             NaN             NaN             NaN             NaN             NaN             NaN             NaN             NaN             NaN             NaN      NaN      NaN       NaN       NaN       NaN       NaN     NaN      NaN         NaN         NaN         NaN         NaN         NaN         NaN         NaN         NaN         NaN         NaN         NaN         NaN       NaN       NaN      NaN             NaN              NaN       NaN       NaN       NaN        NaN        NaN             NaN             NaN              NaN              NaN        NaN        NaN         NaN         NaN         NaN         9.5       100.0           1.0          NaN          NaN         NaN         NaN          NaN          NaN          NaN          NaN          NaN            NaN           NaN           NaN      NaN      NaN        NaN       NaN       NaN       NaN       NaN           NaN           NaN               NaN         NaN            NaN            NaN            NaN            NaN          9.0      294.0        19.0       1002.0    35.188  1970     11           44.448   Depression              NaN         NaN         NaN             2
+1  1972244N12123    1972      87    NI       BB  ELSIE  1972-09-06 15:00:00     TS  14.5974  99.8663       NaN       NaN         NaN       main          0       0.0  _PP___________         NaN    WP171972      NaN      NaN         NaN         NaN       NaN       NaN        -5         NaN         NaN         NaN         NaN         NaN         NaN         NaN         NaN         NaN         NaN         NaN         NaN       NaN       NaN      NaN      NaN    14.4423    99.7125          2.0         NaN      1002.0            0.0             NaN              NaN            0.0             NaN              NaN         NaN  14.7525   100.02      0.0      17.0    1002.0      NaN      NaN      NaN       NaN       NaN           NaN           NaN             NaN            NaN            NaN          NaN          NaN            NaN          NaN          NaN           NaN           NaN           NaN           NaN         NaN          NaN             NaN             NaN             NaN             NaN             NaN             NaN             NaN             NaN             NaN             NaN             NaN             NaN      NaN      NaN       NaN       NaN       NaN       NaN     NaN      NaN         NaN         NaN         NaN         NaN         NaN         NaN         NaN         NaN         NaN         NaN         NaN         NaN       NaN       NaN      NaN             NaN              NaN       NaN       NaN       NaN        NaN        NaN             NaN             NaN              NaN              NaN        NaN        NaN          TC         NaN         NaN         NaN         NaN           1.0          NaN          NaN         NaN         NaN          NaN          NaN          NaN          NaN          NaN            NaN           NaN           NaN      NaN      NaN        NaN       NaN       NaN       NaN       NaN           NaN           NaN               NaN         NaN            NaN            NaN            NaN            NaN          9.0      272.0        17.0       1002.0    31.484  1972      9            0.000   Depression              NaN         NaN         NaN             2
+2  1972244N12123    1972      87    NI       BB  ELSIE  1972-09-06 18:00:00     TS  14.5000  99.5500       NaN       NaN         NaN       main          0       0.0  _OO___________         NaN         NaN      NaN      NaN         NaN         NaN       NaN       NaN        -5         NaN         NaN         NaN         NaN         NaN         NaN         NaN         NaN         NaN         NaN         NaN         NaN       NaN       NaN      NaN      NaN    14.4000    99.5000          2.0         NaN      1004.0            0.0             NaN              NaN            0.0             NaN              NaN         0.0  14.6000    99.60      0.0      17.0    1003.0      NaN      NaN      NaN       NaN       NaN           NaN           NaN             NaN            NaN            NaN          NaN          NaN            NaN          NaN          NaN           NaN           NaN           NaN           NaN         NaN          NaN             NaN             NaN             NaN             NaN             NaN             NaN             NaN             NaN             NaN             NaN             NaN             NaN      NaN      NaN       NaN       NaN       NaN       NaN     NaN      NaN         NaN         NaN         NaN         NaN         NaN         NaN         NaN         NaN         NaN         NaN         NaN         NaN       NaN       NaN      NaN             NaN              NaN       NaN       NaN       NaN        NaN        NaN             NaN             NaN              NaN              NaN        NaN        NaN         NaN         NaN         NaN         NaN         NaN           1.0          NaN          NaN         NaN         NaN          NaN          NaN          NaN          NaN          NaN            NaN           NaN           NaN      NaN      NaN        NaN       NaN       NaN       NaN       NaN           NaN           NaN               NaN         NaN            NaN            NaN            NaN            NaN          6.0      248.0        17.0       1004.0    31.484  1972      9            0.000   Depression              2.0     -0.0974     -0.3163             2
+
+=== ml_risk_features.csv ===
+Columns: ['storm_id', 'storm_name', 'timestamp', 'storm_lat', 'storm_lon', 'wind_knots', 'wind_kmh', 'pressure_mb', 'imd_category', 'city', 'city_lat', 'city_lon', 'distance_km', 'population_density', 'risk_level', 'risk_numeric']
+Sample:
+        storm_id storm_name            timestamp  storm_lat  storm_lon  wind_knots  wind_kmh  pressure_mb           imd_category           city  city_lat  city_lon  distance_km  population_density risk_level  risk_numeric
+0  1972098N09091  NOT_NAMED  1972-04-09 00:00:00    12.7908    90.3997        60.0    111.12          NaN  Severe Cyclonic Storm  Visakhapatnam   17.6868   83.2185       943.11               18480     Medium             1
+1  1972098N09091  NOT_NAMED  1972-04-09 00:00:00    12.7908    90.3997        60.0    111.12          NaN  Severe Cyclonic Storm        Chennai   13.0827   80.2707      1098.11               26553       High             2
+2  1972098N09091  NOT_NAMED  1972-04-09 00:00:00    12.7908    90.3997        60.0    111.12          NaN  Severe Cyclonic Storm        Kolkata   22.5726   88.3639      1108.80               24306       High             2
+
+=== data_cities_expanded.csv ===
+Columns: ['city', 'latitude', 'longitude', 'population_density']
+                  city  latitude  longitude  population_density
+0        Visakhapatnam   17.6868    83.2185               18480
+1              Chennai   13.0827    80.2707               26553
+2              Kolkata   22.5726    88.3639               24306
+3          Bhubaneswar   20.2961    85.8245                6228
+4               Mumbai   19.0760    72.8777               31700
+5              Paradip   20.3165    86.6085                5200
+6                 Puri   19.7983    85.8249                6120
+7        Machilipatnam   16.1875    81.1389                4580
+8              Nellore   14.4426    79.9865                5900
+9          Pondicherry   11.9416    79.8083                7120
+10           Mangalore   12.9141    74.8560                6960
+11               Kochi    9.9312    76.2673                7100
+12  Thiruvananthapuram    8.5241    76.9366                5284
+13           Ratnagiri   16.9902    73.3120                2150
+14           Tuticorin    8.7642    78.1348                4800
+
+=== city_population.csv ===
+            city  latitude  longitude
+0  Vishakapatnam   17.6868    83.2185
+1        Chennai   13.0827    80.2707
+2        Kolkata   22.5726    88.3639
+3    Bhubaneswar   20.2961    85.8245
+4         Mumbai   19.0760    72.8777
+
+=== rainfall_data.csv ===
+                        name  latitude  longitude
+0      Vizag Cyclone Shelter    17.687     83.220
+1        Chennai Relief Camp    13.085     80.275
+2      Odisha Cyclone Center    20.300     85.820
+3  Kolkata Emergency Shelter    22.575     88.360
+4     Community Hall Shelter    17.690     83.215
+
+=== weather_daily_all_cities.csv ===
+Columns: ['date', 'temperature_2m_max', 'temperature_2m_min', 'temperature_2m_mean', 'rain_sum', 'precipitation_sum', 'precipitation_hours', 'windspeed_10m_max', 'windgusts_10m_max', 'winddirection_10m_dominant', 'city', 'latitude', 'longitude']
+Sample:
+         date  temperature_2m_max  temperature_2m_min  temperature_2m_mean  rain_sum  precipitation_sum  precipitation_hours  windspeed_10m_max  windgusts_10m_max  winddirection_10m_dominant       city  latitude  longitude
+0  2019-01-01                33.7                21.8                 26.4       0.0                0.0                  0.0               21.6               42.5                          72  Mangalore   12.9141     74.856
+1  2019-01-02                34.0                21.0                 25.8       0.0                0.0                  0.0               20.9               43.9                         110  Mangalore   12.9141     74.856
+2  2019-01-03                32.5                20.5                 25.4       0.0                0.0                  0.0               19.7               43.9                          49  Mangalore   12.9141     74.856
+
+=== path_prediction.pkl (size: 113 bytes) ===
+Type: <class 'dict'>
+Keys: ['method', 'lookback', 'mean_error_km', 'median_error_km']
+Content: {'method': 'linear_extrapolation', 'lookback': 4, 'mean_error_km': 23.372016968978546, 'median_error_km': 16.70691090578754}
+
+=== rainfall_model.pkl (size: 4297505 bytes) ===
+ERROR loading: STACK_GLOBAL requires str
+
+=== rainfall_model_meta.pkl (size: 396 bytes) ===
+Type: <class 'dict'>
+Keys: ['features', 'rmse', 'mae', 'r2']
+Content: {'features': ['temperature_2m_mean', 'temperature_2m_max', 'temperature_2m_min', 'windspeed_10m_max', 'windgusts_10m_max', 'precipitation_hours', 'rain_lag_1d', 'rain_lag_3d', 'rain_lag_7d', 'wind_change', 'temp_change', 'month', 'is_cyclone_season'], 'rmse': np.float64(7.074607890639075), 'mae': 3.890024589427217, 'r2': 0.8056001574325284}
+
+=== risk_classifier.pkl (size: 6739721 bytes) ===
+ERROR loading: STACK_GLOBAL requires str
+
+=== risk_label_encoder.pkl (size: 423 bytes) ===
+ERROR loading: invalid load key, '\x08'.
+
+=== wind_model.pkl (size: 3185293 bytes) ===
+ERROR loading: No module named 'xgboost'
+
+=== wind_model_meta.pkl (size: 268 bytes) ===
+Type: <class 'dict'>
+Keys: ['features', 'rmse', 'r2']
+Content: {'features': ['pressure_mb', 'pressure_change', 'category_num', 'LAT', 'LON', 'lat_change', 'lon_change', 'month', 'dist_to_land_km'], 'rmse': np.float64(3.680727140426024), 'r2': 0.990156692879197}
+

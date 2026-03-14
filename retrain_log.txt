@@ -1,0 +1,55 @@
+﻿============================================================
+Training Rainfall Intensity Model (RandomForestRegressor)
+============================================================
+  RMSE : 7.1416
+  MAE  : 3.7329
+  R▓   : 0.8019
+python : Traceback (most 
+recent call last):
+At line:1 char:1
++ python retrain_models.py 
+2>&1 | Out-File -FilePath 
+retrain_log.txt -E ...
++ 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo           
+   : NotSpecified: (Traceba  
+  ck (most recent call las   
+ t)::String) [], RemoteEx    
+ception
+    + FullyQualifiedErrorId  
+   : NativeCommandError
+ 
+  File "C:\Users\geeth\Downlo
+ads\New folder\CycloneDashboa
+rd\CycloneDashboard\retrain_m
+odels.py", line 183, in 
+<module>
+    train_rainfall_model()
+    ~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\geeth\Downlo
+ads\New folder\CycloneDashboa
+rd\CycloneDashboard\retrain_m
+odels.py", line 77, in 
+train_rainfall_model
+    print("  \u2713 Saved 
+rainfall_model.pkl & 
+rainfall_model_meta.pkl\n")
+    ~~~~~^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^
+  File "C:\Users\geeth\AppDat
+a\Local\Programs\Python\Pytho
+n313\Lib\encodings\cp1252.py"
+, line 19, in encode
+    return codecs.charmap_enc
+ode(input,self.errors,encodin
+g_table)[0]
+           ~~~~~~~~~~~~~~~~~~
+~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^
+UnicodeEncodeError: 
+'charmap' codec can't encode 
+character '\u2713' in 
+position 2: character maps 
+to <undefined>
