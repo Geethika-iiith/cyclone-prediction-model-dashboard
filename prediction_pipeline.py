@@ -35,28 +35,23 @@ def _load_model(name):
 # ──────────────────── LOAD ALL MODELS ───────────────────────────
 def load_models():
     models = {}
-    try:
-        models["rainfall"] = _load_model("rainfall_model.pkl")
-        models["rainfall_meta"] = _load_model("rainfall_model_meta.pkl")
-    except Exception as e:
-        print(f"Warning: Could not load rainfall model: {e}")
+    
+    def safe_load(key, filename):
+        try:
+            val = _load_model(filename)
+            models[key] = val
+            return val
+        except Exception as e:
+            # Re-raise so Streamlit can see the error
+            raise RuntimeError(f"FATAL: Could not load {filename}. Error: {e}")
 
-    try:
-        models["wind"] = _load_model("wind_model.pkl")
-        models["wind_meta"] = _load_model("wind_model_meta.pkl")
-    except Exception as e:
-        print(f"Warning: Could not load wind model: {e}")
-
-    try:
-        models["risk"] = _load_model("risk_classifier.pkl")
-        models["risk_encoder"] = _load_model("risk_label_encoder.pkl")
-    except Exception as e:
-        print(f"Warning: Could not load risk model: {e}")
-
-    try:
-        models["path_meta"] = _load_model("path_prediction.pkl")
-    except Exception as e:
-        print(f"Warning: Could not load path prediction: {e}")
+    safe_load("rainfall", "rainfall_model.pkl")
+    safe_load("rainfall_meta", "rainfall_model_meta.pkl")
+    safe_load("wind", "wind_model.pkl")
+    safe_load("wind_meta", "wind_model_meta.pkl")
+    safe_load("risk", "risk_classifier.pkl")
+    safe_load("risk_encoder", "risk_label_encoder.pkl")
+    safe_load("path_meta", "path_prediction.pkl")
 
     return models
 
@@ -71,9 +66,20 @@ def predict_rainfall(models: dict, weather_data: dict) -> dict:
     if "rainfall" not in models or weather_data is None:
         return {"predictions": [], "model_r2": 0}
 
-    meta = models["rainfall_meta"]
+    meta = models.get("rainfall_meta")
     model = models["rainfall"]
-    features = meta["features"]
+    
+    # Fallback features if meta is invalid
+    features = []
+    if isinstance(meta, dict) and "features" in meta:
+        features = meta["features"]
+    else:
+        features = [
+            "temperature_2m_mean", "temperature_2m_max", "temperature_2m_min",
+            "windspeed_10m_max", "windgusts_10m_max", "precipitation_hours",
+            "rain_lag_1d", "rain_lag_3d", "rain_lag_7d",
+            "wind_change", "temp_change", "month", "is_cyclone_season"
+        ]
 
     daily = weather_data.get("daily", {})
     dates = daily.get("time", [])
@@ -123,23 +129,35 @@ def predict_rainfall(models: dict, weather_data: dict) -> dict:
             pred = float(model.predict(X)[0])
             pred = max(0, pred)  # No negative rainfall
 
+            # Blend with raw forecast for stability
+            raw_rain = daily.get("rain_sum", [0])[i] or 0
+            if raw_rain > 0 and pred < raw_rain * 0.2:
+                pred = (pred + raw_rain) / 2
+
             predictions.append({
                 "date": date,
                 "predicted_rainfall_mm": round(pred, 2),
-                "actual_rain_sum": daily.get("rain_sum", [None])[i],
+                "actual_rain_sum": raw_rain,
             })
         except Exception as e:
             predictions.append({
                 "date": date,
-                "predicted_rainfall_mm": 0,
+                "predicted_rainfall_mm": (daily.get("rain_sum", [0])[i] or 0), # Fallback to raw sum
                 "actual_rain_sum": daily.get("rain_sum", [None])[i],
                 "error": str(e),
             })
 
+    # Robust metadata access
+    r2 = 0
+    rmse = 0
+    if isinstance(meta, dict):
+        r2 = meta.get("r2", 0)
+        rmse = meta.get("rmse", 0)
+
     return {
         "predictions": predictions,
-        "model_r2": meta.get("r2", 0),
-        "model_rmse": meta.get("rmse", 0),
+        "model_r2": r2,
+        "model_rmse": rmse,
     }
 
 
@@ -153,9 +171,19 @@ def predict_wind_speed(models: dict, cyclone_data: dict) -> dict:
     if "wind" not in models or cyclone_data is None:
         return {"predicted_wind_kmh": 0, "model_r2": 0}
 
-    meta = models["wind_meta"]
+    meta = models.get("wind_meta")
     model = models["wind"]
-    features = meta["features"]
+    
+    # Fallback features if meta is invalid
+    features = []
+    if isinstance(meta, dict) and "features" in meta:
+        features = meta["features"]
+    else:
+        features = [
+            "pressure_mb", "pressure_change", "category_num",
+            "LAT", "LON", "lat_change", "lon_change",
+            "month", "dist_to_land_km"
+        ]
 
     # Map cyclone category to number
     cat_map = {
@@ -192,10 +220,17 @@ def predict_wind_speed(models: dict, cyclone_data: dict) -> dict:
     pred = float(model.predict(X)[0])
     pred = max(0, pred)
 
+    # Robust metadata access
+    r2 = 0
+    rmse = 0
+    if isinstance(meta, dict):
+        r2 = meta.get("r2", 0)
+        rmse = meta.get("rmse", 0)
+
     return {
         "predicted_wind_kmh": round(pred, 1),
-        "model_r2": meta.get("r2", 0),
-        "model_rmse": meta.get("rmse", 0),
+        "model_r2": r2,
+        "model_rmse": rmse,
     }
 
 
@@ -323,12 +358,14 @@ def run_full_prediction(
     weather_data: dict,
     cyclone_data: dict,
     population_density: float = 10000,
+    models: dict = None,
 ) -> dict:
     """
     Complete prediction pipeline:
     City → Weather + Cyclone data → ML models → Risk assessment
     """
-    models = load_models()
+    if models is None:
+        models = load_models()
 
     # 1. Rainfall prediction
     rainfall_result = predict_rainfall(models, weather_data)

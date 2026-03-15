@@ -240,6 +240,16 @@ def get_models():
     return load_models()
 
 
+@st.cache_data(ttl=600)
+def get_cached_weather(lat, lon):
+    return fetch_weather_forecast(lat, lon, days=7), fetch_weather_history(lat, lon, days_back=14)
+
+
+@st.cache_data(ttl=3600)
+def get_cached_simulation(lat, lon):
+    return get_simulated_active_cyclone(lat, lon)
+
+
 @st.cache_data
 def get_city_database():
     base = os.path.dirname(os.path.abspath(__file__))
@@ -369,13 +379,12 @@ if selected_city is None:
 
 # ──────────────────── FETCH LIVE DATA ───────────────────────────
 with st.spinner("Fetching live weather data..."):
-    weather_data = fetch_weather_forecast(city_lat, city_lon, days=7)
-    weather_history = fetch_weather_history(city_lat, city_lon, days_back=14)
+    weather_data, weather_history = get_cached_weather(city_lat, city_lon)
 
 cyclone_data = None
 if enable_cyclone_sim:
     with st.spinner("Gathering cyclone scenario data..."):
-        cyclone_data = get_simulated_active_cyclone(city_lat, city_lon)
+        cyclone_data = get_cached_simulation(city_lat, city_lon)
 
 # ──────────────────── RUN PREDICTIONS ───────────────────────────
 with st.spinner("Analyzing data and running analytics..."):
@@ -391,6 +400,7 @@ with st.spinner("Analyzing data and running analytics..."):
             "distance_km": 9999, "track": [],
         },
         population_density=pop_density,
+        models=models,
     )
 
 # ──────────────────── CITY INFO BAR ─────────────────────────────
