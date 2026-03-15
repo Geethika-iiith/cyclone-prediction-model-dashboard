@@ -423,6 +423,16 @@ if predictions["rainfall"]["predictions"]:
     avg_rainfall = np.mean(rainfalls)
     max_rainfall = max(rainfalls)
 
+forecast_avg_rainfall = 0
+if weather_data and "daily" in weather_data:
+    forecast_rain = [r or 0 for r in weather_data["daily"].get("rain_sum", [])]
+    if forecast_rain:
+        forecast_avg_rainfall = float(np.mean(forecast_rain))
+
+rainfall_note = f"Max: {max_rainfall:.1f} mm | 7-day avg"
+if avg_rainfall == 0 and forecast_avg_rainfall == 0:
+    rainfall_note = "Dry forecast for next 7 days"
+
 pred_wind = predictions["wind"]["predicted_wind_kmh"]
 risk_level = predictions["risk"]["risk_level"]
 risk_confidence = predictions["risk"]["confidence"]
@@ -446,7 +456,8 @@ with col1:
         <div class="metric-icon">🌧️</div>
         <div class="metric-label">Predicted Rainfall</div>
         <div class="metric-value" style="color: #60a5fa;">{avg_rainfall:.1f} mm</div>
-        <div class="metric-sub">Max: {max_rainfall:.1f} mm | 7-day avg</div>
+        <div class="metric-sub">{rainfall_note}</div>
+        <div class="metric-sub">Forecast avg rain: {forecast_avg_rainfall:.1f} mm</div>
         <div class="metric-sub">Model R²: {predictions['rainfall'].get('model_r2', 0):.3f}</div>
     </div>
     """, unsafe_allow_html=True)
