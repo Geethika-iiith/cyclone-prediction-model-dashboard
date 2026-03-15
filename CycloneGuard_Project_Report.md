@@ -1,4 +1,4 @@
-# CycloneGuard: Comprehensive Project Report
+# Cyclone Guard: Comprehensive Project Report
 ## Team Aftershock: Predictive Disaster Intelligence
 
 **Team Members:**

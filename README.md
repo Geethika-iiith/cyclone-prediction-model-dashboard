@@ -1,4 +1,4 @@
-# CycloneGuard: Predictive Disaster Intelligence
+# Cyclone Guard: Predictive Disaster Intelligence
 ### Team Aftershock: Geethika Palla | Aniket Verma | Koustubh Jain
 
 CycloneGuard is an AI-powered disaster prediction dashboard designed for coastal communities. It combines machine learning models with real-time satellite telemetry to provide hyper-local risk assessments, weather forecasts, and evacuation shelter mapping.

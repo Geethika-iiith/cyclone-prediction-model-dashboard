@@ -10,8 +10,8 @@ def create_presentation():
     slide = prs.slides.add_slide(prs.slide_layouts[0])
     title = slide.shapes.title
     subtitle = slide.placeholders[1]
-    title.text = "CycloneGuard: Predictive Disaster Intelligence"
-    subtitle.text = "Team Aftershock\nGeethika Palla | Aniket Verma | Koustubh Jain"
+    title.text = "Cyclone Guard"
+    subtitle.text = "Predictive safety dashboard for coastal communities\n\nTeam Aftershock\nGeethika Palla | Aniket Verma | Koustubh Jain"
 
     # 2. Team Aftershock
     slide = prs.slides.add_slide(prs.slide_layouts[1])
