@@ -56,21 +56,20 @@ st.markdown("""
     @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
 
     :root {
-        --primary: #4f46e5;
-        --primary-dark: #3730a3;
-        --accent: #818cf8;
-        --bg-main: #f1f5f9;
-        --card-bg: rgba(255, 255, 255, 0.9);
-        --text-main: #1e293b;
+        --primary: #6366f1;
+        --secondary: #8b5cf6;
+        --accent: #ec4899;
+        --bg-main: #f8fafc;
+        --card-bg: #ffffff;
+        --text-main: #0f172a;
         --text-sub: #475569;
         --border: #e2e8f0;
-        --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
         
-        /* Muted Professional Accents */
-        --success: #059669;
-        --warning-med: #d97706;
-        --warning-high: #ea580c;
-        --danger: #be123c;
+        /* Vibrant Status Colors */
+        --success: #10b981;
+        --warning: #f59e0b;
+        --danger: #ef4444;
+        --info: #3b82f6;
     }
 
     /* Global styles */
@@ -78,188 +77,154 @@ st.markdown("""
         font-family: 'Inter', sans-serif;
         background-color: var(--bg-main);
         background-image: 
-            radial-gradient(at 0% 0%, rgba(79, 70, 229, 0.03) 0px, transparent 50%),
-            radial-gradient(at 100% 0%, rgba(99, 102, 241, 0.05) 0px, transparent 50%);
+            radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.08) 0px, transparent 50%),
+            radial-gradient(at 100% 0%, rgba(236, 72, 153, 0.08) 0px, transparent 50%);
     }
 
     h1, h2, h3 {
         font-family: 'Outfit', sans-serif !important;
         color: var(--text-main) !important;
-    }
-
-    /* Header */
-    .main-header {
-        background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
-        backdrop-filter: blur(10px);
-        padding: 2.5rem;
-        border-radius: 24px;
-        margin-bottom: 2rem;
-        box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05);
-        border: 1px solid rgba(255, 255, 255, 0.8);
-        text-align: center;
-        position: relative;
-        overflow: hidden;
-    }
-    .main-header::before {
-        content: '';
-        position: absolute;
-        top: 0; left: 0; right: 0; height: 4px;
-        background: linear-gradient(90deg, var(--primary), var(--accent));
-    }
-    .main-header h1 {
-        font-size: 3rem;
-        font-weight: 800;
-        margin: 0;
-        letter-spacing: -0.04em;
-        line-height: 1.1;
-    }
-    .main-header h1 span {
-        color: var(--primary);
-    }
-    .main-header p {
-        font-size: 1.1rem;
-        color: var(--text-sub);
-        margin: 0.8rem 0 0;
-        font-weight: 500;
-        letter-spacing: 0.02em;
-    }
-
-    /* Metric cards */
-    .metric-card {
-        background: white;
-        border-radius: 20px;
-        padding: 1.8rem;
-        box-shadow: var(--shadow);
-        border: 1px solid var(--border);
-        transition: all 0.3s ease;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-    }
-    .metric-card:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 20px 25px -5px rgba(0,0,0,0.05);
-        border-color: var(--accent);
-    }
-    .metric-card .metric-label {
-        font-size: 0.8rem;
-        color: var(--text-sub);
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        margin-bottom: 0.5rem;
-    }
-    .metric-card .metric-value {
-        font-size: 2.4rem;
-        font-weight: 800;
-        color: var(--text-main);
-        letter-spacing: -0.03em;
-        line-height: 1;
-    }
-    .metric-card .metric-sub {
-        font-size: 0.85rem;
-        color: #64748b;
-        margin-top: 0.8rem;
-        font-weight: 500;
-    }
-
-    /* Risk colors */
-    .risk-severe { color: var(--danger); }
-    .risk-high { color: var(--warning-high); }
-    .risk-medium { color: var(--warning-med); }
-    .risk-low { color: var(--success); }
-
-    /* Risk bar */
-    .risk-bar {
-        background: #f1f5f9;
-        border-radius: 10px;
-        height: 8px;
-        margin-top: 1rem;
-        overflow: hidden;
-    }
-    .risk-fill-severe { background: var(--danger); width: 95%; height: 100%; border-radius: 10px; }
-    .risk-fill-high { background: var(--warning-high); width: 75%; height: 100%; border-radius: 10px; }
-    .risk-fill-medium { background: var(--warning-med); width: 50%; height: 100%; border-radius: 10px; }
-    .risk-fill-low { background: var(--success); width: 25%; height: 100%; border-radius: 10px; }
-
-    /* Section headers */
-    .section-header {
-        font-size: 1.4rem;
-        font-weight: 700;
-        color: var(--text-main);
-        margin: 2.5rem 0 1.2rem;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-    }
-    .section-header::after {
-        content: '';
-        flex-grow: 1;
-        height: 1px;
-        background: var(--border);
-    }
-
-    /* Sidebar */
-    [data-testid="stSidebar"] {
-        background-color: #ffffff;
-        border-right: 1px solid var(--border);
-    }
-    
-    /* City Info */
-    .city-info-container {
-        background: #ffffff;
-        padding: 1.2rem 1.8rem;
-        border-radius: 18px;
-        border: 1px solid var(--border);
-        margin-bottom: 2rem;
-        box-shadow: var(--shadow);
-    }
-    .city-info-text {
-        font-size: 1.8rem; 
-        font-weight: 800; 
-        color: var(--text-main);
         letter-spacing: -0.02em;
     }
 
-    /* Tabs */
-    .stTabs [data-baseweb="tab-list"] {
-        gap: 8px;
-        padding: 0.5rem;
-        background: #f8fafc;
-        border-radius: 12px;
+    /* Vibrant Header */
+    .main-header {
+        background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #d946ef 100%);
+        padding: 4rem 2rem;
+        border-radius: 30px;
+        margin-bottom: 2.5rem;
+        color: white;
+        box-shadow: 0 20px 40px -10px rgba(99, 102, 241, 0.4);
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        border: none;
+    }
+    .main-header h1 {
+        font-size: 4rem;
+        font-weight: 800;
+        margin: 0;
+        color: white !important;
+        text-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    .main-header p {
+        font-size: 1.3rem;
+        color: rgba(255,255,255,0.9);
+        margin: 1rem 0 0;
+        font-weight: 500;
+    }
+
+    /* Glowing Metric cards */
+    .metric-card {
+        background: white;
+        border-radius: 24px;
+        padding: 2.2rem;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
         border: 1px solid var(--border);
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .metric-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 25px 50px -12px rgba(99, 102, 241, 0.15);
+        border-color: var(--primary);
+    }
+    .metric-card .metric-label {
+        font-size: 0.85rem;
+        color: var(--text-sub);
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        margin-bottom: 0.8rem;
+    }
+    .metric-card .metric-value {
+        font-size: 3rem;
+        font-weight: 800;
+        letter-spacing: -0.05em;
+        line-height: 1;
+        margin: 0.5rem 0;
+    }
+    .metric-card .metric-sub {
+        font-size: 0.9rem;
+        color: #94a3b8;
+        margin-top: 1rem;
+        font-weight: 500;
+    }
+
+    /* Vibrant Section headers */
+    .section-header {
+        font-size: 1.8rem;
+        font-weight: 800;
+        color: var(--text-main);
+        margin: 3.5rem 0 1.5rem;
+        padding-left: 1.2rem;
+        border-left: 8px solid var(--accent);
+        background: linear-gradient(90deg, #f1f5f9, transparent);
+        border-radius: 0 10px 10px 0;
+    }
+
+    /* City Info container */
+    .city-info-container {
+        background: white;
+        padding: 1.5rem 2.5rem;
+        border-radius: 24px;
+        box-shadow: 0 10px 20px -5px rgba(0,0,0,0.05);
+        border-left: 8px solid var(--primary);
+        margin-bottom: 2.5rem;
+    }
+    .city-info-text {
+        font-size: 2.2rem; 
+        font-weight: 800; 
+        color: var(--text-main);
+    }
+
+    /* Vibrant Tabs */
+    .stTabs [data-baseweb="tab-list"] {
+        gap: 15px;
+        padding: 0.8rem;
+        background: #f1f5f9;
+        border-radius: 20px;
     }
     .stTabs [data-baseweb="tab"] {
-        padding: 0.5rem 1.2rem;
-        border-radius: 8px !important;
+        padding: 0.8rem 1.8rem;
+        border-radius: 14px !important;
         border: none !important;
+        background: transparent !important;
         color: var(--text-sub) !important;
-        font-weight: 600 !important;
-        transition: all 0.2s ease;
+        font-weight: 700 !important;
+        transition: all 0.3s;
     }
     .stTabs [aria-selected="true"] {
         background: white !important;
         color: var(--primary) !important;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        box-shadow: 0 10px 15px -3px rgba(99, 102, 241, 0.2);
+        transform: scale(1.05);
     }
 
-    /* Status badge */
-    .status-badge {
-        padding: 4px 12px;
-        border-radius: 12px;
-        font-size: 0.7rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
+    /* Risk Bar Glow */
+    .risk-bar {
+        background: #f1f5f9;
+        border-radius: 20px;
+        height: 12px;
+        margin-top: 1.5rem;
+        overflow: hidden;
     }
-    .badge-live { background: #ecfdf5; color: #065f46; border: 1px solid #d1fae5; }
+    .risk-fill-severe { background: var(--danger); box-shadow: 0 0 15px var(--danger); width: 95%; height: 100%; border-radius: 20px; }
+    .risk-fill-high { background: #f97316; box-shadow: 0 0 15px #f97316; width: 75%; height: 100%; border-radius: 20px; }
+    .risk-fill-medium { background: var(--warning); box-shadow: 0 0 15px var(--warning); width: 50%; height: 100%; border-radius: 20px; }
+    .risk-fill-low { background: var(--success); box-shadow: 0 0 15px var(--success); width: 25%; height: 100%; border-radius: 20px; }
 
-    /* Clean up */
+    /* Hide streamlit stuff */
     header {visibility: hidden;}
     #MainMenu {visibility: hidden;}
     footer {visibility: hidden;}
     .stDeployButton {display:none;}
     
+    /* Vibrant Sidebar */
+    [data-testid="stSidebar"] {
+        background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+        border-right: 1px solid var(--border);
+    }
+
     /* Scrollbar */
     ::-webkit-scrollbar { width: 8px; }
     ::-webkit-scrollbar-track { background: var(--bg-main); }
