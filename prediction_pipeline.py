@@ -17,9 +17,19 @@ MODELS_DIR = os.path.join(BASE, "models")
 
 
 def _load_model(name):
-    path = os.path.join(MODELS_DIR, name)
-    with open(path, "rb") as f:
-        return pickle.load(f)
+    # Prefer the structured models/ folder, then fall back to legacy root layout.
+    candidate_paths = [
+        os.path.join(MODELS_DIR, name),
+        os.path.join(BASE, name),
+    ]
+
+    for path in candidate_paths:
+        if os.path.exists(path):
+            with open(path, "rb") as f:
+                return pickle.load(f)
+
+    searched = ", ".join(candidate_paths)
+    raise FileNotFoundError(f"{name} not found in: {searched}")
 
 
 # ──────────────────── LOAD ALL MODELS ───────────────────────────
