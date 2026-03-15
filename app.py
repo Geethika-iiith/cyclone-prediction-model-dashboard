@@ -237,7 +237,17 @@ st.markdown("""
 # ──────────────────── LOAD DATA & MODELS ────────────────────────
 @st.cache_resource
 def get_models():
-    return load_models()
+    try:
+        return load_models()
+    except Exception as e:
+        return {"load_errors": [str(e)]}
+
+models = get_models()
+if "load_errors" in models:
+    st.error("⚠️ Some AI models failed to load. Predictions may be unavailable.")
+    with st.expander("Show Technical Details"):
+        for err in models["load_errors"]:
+            st.write(f"- {err}")
 
 
 @st.cache_data(ttl=600)

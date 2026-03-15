@@ -35,6 +35,7 @@ def _load_model(name):
 # ──────────────────── LOAD ALL MODELS ───────────────────────────
 def load_models():
     models = {}
+    errors = []
     
     def safe_load(key, filename):
         try:
@@ -42,8 +43,8 @@ def load_models():
             models[key] = val
             return val
         except Exception as e:
-            # Re-raise so Streamlit can see the error
-            raise RuntimeError(f"FATAL: Could not load {filename}. Error: {e}")
+            errors.append(f"{filename}: {e}")
+            return None
 
     safe_load("rainfall", "rainfall_model.pkl")
     safe_load("rainfall_meta", "rainfall_model_meta.pkl")
@@ -53,6 +54,9 @@ def load_models():
     safe_load("risk_encoder", "risk_label_encoder.pkl")
     safe_load("path_meta", "path_prediction.pkl")
 
+    if errors:
+        models["load_errors"] = errors
+        
     return models
 
 
