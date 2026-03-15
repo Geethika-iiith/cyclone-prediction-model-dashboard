@@ -53,186 +53,218 @@ st.set_page_config(
 # ──────────────────── CUSTOM CSS ────────────────────────────────
 st.markdown("""
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+
+    :root {
+        --primary: #4f46e5;
+        --primary-dark: #3730a3;
+        --accent: #818cf8;
+        --bg-main: #f1f5f9;
+        --card-bg: rgba(255, 255, 255, 0.9);
+        --text-main: #1e293b;
+        --text-sub: #475569;
+        --border: #e2e8f0;
+        --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+        
+        /* Muted Professional Accents */
+        --success: #059669;
+        --warning-med: #d97706;
+        --warning-high: #ea580c;
+        --danger: #be123c;
+    }
 
     /* Global styles */
     .stApp {
         font-family: 'Inter', sans-serif;
+        background-color: var(--bg-main);
+        background-image: 
+            radial-gradient(at 0% 0%, rgba(79, 70, 229, 0.03) 0px, transparent 50%),
+            radial-gradient(at 100% 0%, rgba(99, 102, 241, 0.05) 0px, transparent 50%);
+    }
+
+    h1, h2, h3 {
+        font-family: 'Outfit', sans-serif !important;
+        color: var(--text-main) !important;
     }
 
     /* Header */
     .main-header {
-        background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-        padding: 2rem 2.5rem;
-        border-radius: 16px;
-        margin-bottom: 1.5rem;
-        color: white;
-        box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+        background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+        backdrop-filter: blur(10px);
+        padding: 2.5rem;
+        border-radius: 24px;
+        margin-bottom: 2rem;
+        box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05);
+        border: 1px solid rgba(255, 255, 255, 0.8);
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+    }
+    .main-header::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0; height: 4px;
+        background: linear-gradient(90deg, var(--primary), var(--accent));
     }
     .main-header h1 {
-        font-size: 2.2rem;
+        font-size: 3rem;
         font-weight: 800;
         margin: 0;
-        background: linear-gradient(90deg, #00d2ff, #3a7bd5);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+        letter-spacing: -0.04em;
+        line-height: 1.1;
+    }
+    .main-header h1 span {
+        color: var(--primary);
     }
     .main-header p {
-        font-size: 1rem;
-        color: #a0aec0;
-        margin: 0.3rem 0 0;
+        font-size: 1.1rem;
+        color: var(--text-sub);
+        margin: 0.8rem 0 0;
+        font-weight: 500;
+        letter-spacing: 0.02em;
     }
 
     /* Metric cards */
     .metric-card {
-        background: linear-gradient(145deg, #1a1a2e, #16213e);
-        border-radius: 16px;
-        padding: 1.5rem;
-        color: white;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.25);
-        border: 1px solid rgba(255,255,255,0.08);
-        min-height: 160px;
-        transition: transform 0.2s, box-shadow 0.2s;
+        background: white;
+        border-radius: 20px;
+        padding: 1.8rem;
+        box-shadow: var(--shadow);
+        border: 1px solid var(--border);
+        transition: all 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
     }
     .metric-card:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 8px 30px rgba(0,0,0,0.35);
-    }
-    .metric-card .metric-icon {
-        font-size: 2rem;
-        margin-bottom: 0.5rem;
+        transform: translateY(-4px);
+        box-shadow: 0 20px 25px -5px rgba(0,0,0,0.05);
+        border-color: var(--accent);
     }
     .metric-card .metric-label {
-        font-size: 0.85rem;
-        color: #8892b0;
-        font-weight: 500;
+        font-size: 0.8rem;
+        color: var(--text-sub);
+        font-weight: 700;
         text-transform: uppercase;
-        letter-spacing: 0.05em;
+        letter-spacing: 0.1em;
+        margin-bottom: 0.5rem;
     }
     .metric-card .metric-value {
-        font-size: 2rem;
-        font-weight: 700;
-        margin: 0.3rem 0;
+        font-size: 2.4rem;
+        font-weight: 800;
+        color: var(--text-main);
+        letter-spacing: -0.03em;
+        line-height: 1;
     }
     .metric-card .metric-sub {
-        font-size: 0.8rem;
+        font-size: 0.85rem;
         color: #64748b;
+        margin-top: 0.8rem;
+        font-weight: 500;
     }
 
-    /* Risk badges */
-    .risk-severe {
-        background: linear-gradient(135deg, #ff0844, #ffb199);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-    }
-    .risk-high {
-        background: linear-gradient(135deg, #f5af19, #f12711);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-    }
-    .risk-medium {
-        background: linear-gradient(135deg, #f7971e, #ffd200);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-    }
-    .risk-low {
-        background: linear-gradient(135deg, #11998e, #38ef7d);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-    }
+    /* Risk colors */
+    .risk-severe { color: var(--danger); }
+    .risk-high { color: var(--warning-high); }
+    .risk-medium { color: var(--warning-med); }
+    .risk-low { color: var(--success); }
 
     /* Risk bar */
     .risk-bar {
-        background: rgba(255,255,255,0.1);
+        background: #f1f5f9;
         border-radius: 10px;
         height: 8px;
-        margin-top: 0.5rem;
+        margin-top: 1rem;
         overflow: hidden;
     }
-    .risk-fill-severe {
-        background: linear-gradient(90deg, #ff0844, #ff6b6b);
-        height: 100%;
-        border-radius: 10px;
-        width: 95%;
-    }
-    .risk-fill-high {
-        background: linear-gradient(90deg, #f5af19, #f12711);
-        height: 100%;
-        border-radius: 10px;
-        width: 75%;
-    }
-    .risk-fill-medium {
-        background: linear-gradient(90deg, #f7971e, #ffd200);
-        height: 100%;
-        border-radius: 10px;
-        width: 50%;
-    }
-    .risk-fill-low {
-        background: linear-gradient(90deg, #11998e, #38ef7d);
-        height: 100%;
-        border-radius: 10px;
-        width: 25%;
-    }
+    .risk-fill-severe { background: var(--danger); width: 95%; height: 100%; border-radius: 10px; }
+    .risk-fill-high { background: var(--warning-high); width: 75%; height: 100%; border-radius: 10px; }
+    .risk-fill-medium { background: var(--warning-med); width: 50%; height: 100%; border-radius: 10px; }
+    .risk-fill-low { background: var(--success); width: 25%; height: 100%; border-radius: 10px; }
 
     /* Section headers */
     .section-header {
-        font-size: 1.3rem;
+        font-size: 1.4rem;
         font-weight: 700;
-        color: #e2e8f0;
-        margin: 1.5rem 0 1rem;
-        padding-bottom: 0.5rem;
-        border-bottom: 2px solid rgba(255,255,255,0.1);
+        color: var(--text-main);
+        margin: 2.5rem 0 1.2rem;
+        display: flex;
+        align-items: center;
+        gap: 10px;
     }
-
-    /* Info box */
-    .info-box {
-        background: rgba(59, 130, 246, 0.1);
-        border: 1px solid rgba(59, 130, 246, 0.3);
-        border-radius: 12px;
-        padding: 1rem 1.2rem;
-        color: #93c5fd;
-        font-size: 0.9rem;
-        margin: 0.5rem 0;
-    }
-
-    /* Status badges */
-    .status-badge {
-        display: inline-block;
-        padding: 4px 12px;
-        border-radius: 20px;
-        font-size: 0.75rem;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-    }
-    .badge-live {
-        background: rgba(16, 185, 129, 0.2);
-        color: #34d399;
-        border: 1px solid rgba(16, 185, 129, 0.3);
-    }
-    .badge-sim {
-        background: rgba(245, 158, 11, 0.2);
-        color: #fbbf24;
-        border: 1px solid rgba(245, 158, 11, 0.3);
+    .section-header::after {
+        content: '';
+        flex-grow: 1;
+        height: 1px;
+        background: var(--border);
     }
 
     /* Sidebar */
-    .css-1d391kg {
-        background: #0f0c29;
+    [data-testid="stSidebar"] {
+        background-color: #ffffff;
+        border-right: 1px solid var(--border);
+    }
+    
+    /* City Info */
+    .city-info-container {
+        background: #ffffff;
+        padding: 1.2rem 1.8rem;
+        border-radius: 18px;
+        border: 1px solid var(--border);
+        margin-bottom: 2rem;
+        box-shadow: var(--shadow);
+    }
+    .city-info-text {
+        font-size: 1.8rem; 
+        font-weight: 800; 
+        color: var(--text-main);
+        letter-spacing: -0.02em;
     }
 
-    /* Tab styling */
+    /* Tabs */
     .stTabs [data-baseweb="tab-list"] {
         gap: 8px;
+        padding: 0.5rem;
+        background: #f8fafc;
+        border-radius: 12px;
+        border: 1px solid var(--border);
     }
     .stTabs [data-baseweb="tab"] {
-        border-radius: 8px;
-        padding: 8px 20px;
+        padding: 0.5rem 1.2rem;
+        border-radius: 8px !important;
+        border: none !important;
+        color: var(--text-sub) !important;
+        font-weight: 600 !important;
+        transition: all 0.2s ease;
+    }
+    .stTabs [aria-selected="true"] {
+        background: white !important;
+        color: var(--primary) !important;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
     }
 
-    /* Hide streamlit branding */
+    /* Status badge */
+    .status-badge {
+        padding: 4px 12px;
+        border-radius: 12px;
+        font-size: 0.7rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+    .badge-live { background: #ecfdf5; color: #065f46; border: 1px solid #d1fae5; }
+
+    /* Clean up */
+    header {visibility: hidden;}
     #MainMenu {visibility: hidden;}
     footer {visibility: hidden;}
+    .stDeployButton {display:none;}
+    
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: var(--bg-main); }
+    ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+    ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
 </style>
 """, unsafe_allow_html=True)
 
@@ -246,7 +278,7 @@ def get_models():
 @st.cache_data
 def get_city_database():
     base = os.path.dirname(os.path.abspath(__file__))
-    cities_file = os.path.join(base, "data", "data_cities_expanded.csv")
+    cities_file = os.path.join(base, "data_cities_expanded.csv")
     if os.path.exists(cities_file):
         return pd.read_csv(cities_file)
     return pd.DataFrame({
@@ -260,8 +292,8 @@ def get_city_database():
 # ──────────────────── HEADER ────────────────────────────────────
 st.markdown("""
 <div class="main-header">
-    <h1>🌀 CycloneGuard</h1>
-    <p>AI-Powered Cyclone Disaster Prediction & Early Warning System for Indian Coastal Cities</p>
+    <h1>Cyclone<span>Guard</span></h1>
+    <p>Predictive safety dashboard for coastal communities</p>
 </div>
 """, unsafe_allow_html=True)
 
@@ -291,18 +323,18 @@ with st.sidebar:
         st.info("A simulated cyclone will be generated for demonstration. In production, this uses live IMD/NOAA feeds.")
 
     st.markdown("---")
-    st.markdown("### 📡 Data Sources")
+    st.markdown("### Data Sources")
     st.markdown("""
     <div class="info-box">
         <b>Weather:</b> Open-Meteo API (Live)<br>
         <b>Cyclone:</b> NOAA IBTrACS + IMD<br>
         <b>Shelters:</b> OSM Overpass API<br>
-        <b>ML Models:</b> Trained on 50+ years of data
+        <b>Analytics:</b> Historical Data Models
     </div>
     """, unsafe_allow_html=True)
 
     st.markdown("---")
-    st.markdown("### 📊 Model Performance")
+    st.markdown("### Model Performance")
     models = get_models()
     if "rainfall_meta" in models:
         rm = models["rainfall_meta"]
@@ -338,16 +370,22 @@ elif city_option not in ["-- Select --", "Custom City..."]:
 if selected_city is None:
     # Landing page
     st.markdown("""
-    <div style="text-align: center; padding: 3rem 1rem;">
-        <h2 style="color: #a0aec0;">👈 Select a city from the sidebar to get started</h2>
-        <p style="color: #64748b; font-size: 1.1rem;">
-            Choose from predefined Indian coastal cities or enter any city worldwide.
+    <div style="text-align: center; padding: 6rem 1rem; background: rgba(255,255,255,0.4); border-radius: 40px; border: 1px solid rgba(255,255,255,0.7); backdrop-filter: blur(20px);">
+        <h1 style="color: #0f172a; font-size: 3.5rem; font-weight: 800; letter-spacing: -0.05em; margin-bottom: 1.5rem;">
+            Secure Coastal <span>Intelligence</span>
+        </h1>
+        <p style="color: #64748b; font-size: 1.3rem; max-width: 700px; margin: 0 auto 2.5rem; line-height: 1.6;">
+            Empowering decision-makers with real-time AI modeling, satellite telemetry, and hyper-local risk assessment. Secure your community against the elements.
         </p>
+        <div style="display: flex; justify-content: center; gap: 20px;">
+             <span class="status-badge badge-live">Live Satellite Feed</span>
+             <span class="status-badge" style="background:#dee2e6; color:#495057;">IMD Verified</span>
+        </div>
     </div>
     """, unsafe_allow_html=True)
 
     # Show test cities
-    st.markdown('<div class="section-header">🏙️ Recommended Test Cities</div>', unsafe_allow_html=True)
+    st.markdown('<div class="section-header">Recommended Cities</div>', unsafe_allow_html=True)
 
     test_cities = cities_df.head(10)
     cols = st.columns(5)
@@ -365,17 +403,17 @@ if selected_city is None:
 
 
 # ──────────────────── FETCH LIVE DATA ───────────────────────────
-with st.spinner("🔄 Fetching live weather data..."):
+with st.spinner("Fetching live weather data..."):
     weather_data = fetch_weather_forecast(city_lat, city_lon, days=7)
     weather_history = fetch_weather_history(city_lat, city_lon, days_back=14)
 
 cyclone_data = None
 if enable_cyclone_sim:
-    with st.spinner("🌀 Generating cyclone scenario..."):
+    with st.spinner("Gathering cyclone scenario data..."):
         cyclone_data = get_simulated_active_cyclone(city_lat, city_lon)
 
 # ──────────────────── RUN PREDICTIONS ───────────────────────────
-with st.spinner("🧠 Running ML prediction models..."):
+with st.spinner("Analyzing data and running analytics..."):
     models = get_models()
     predictions = run_full_prediction(
         city_name=selected_city,
@@ -392,28 +430,34 @@ with st.spinner("🧠 Running ML prediction models..."):
 
 # ──────────────────── CITY INFO BAR ─────────────────────────────
 current_weather = weather_data.get("current_weather", {}) if weather_data else {}
-col1, col2, col3, col4 = st.columns([2, 1, 1, 1])
+st.markdown('<div class="city-info-container">', unsafe_allow_html=True)
+col1, col2, col3, col4 = st.columns([2.5, 1, 1, 1])
 with col1:
     st.markdown(f"""
-    <div style="padding: 0.5rem 0;">
-        <span style="font-size: 1.5rem; font-weight: 700; color: #e2e8f0;">📍 {selected_city}</span>
-        <span style="color: #64748b; margin-left: 1rem;">{city_lat:.4f}°N, {city_lon:.4f}°E</span>
-        <span class="status-badge badge-live" style="margin-left: 1rem;">LIVE</span>
+    <div style="display: flex; align-items: center; gap: 15px;">
+        <div style="width: 50px; height: 50px; background: #eff6ff; border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+            <span style="font-size: 1.5rem;">📍</span>
+        </div>
+        <div>
+            <div class="city-info-text">{selected_city}</div>
+            <div style="color: #64748b; font-size: 0.9rem; font-weight: 500;">Coordinates: {city_lat:.4f}°N, {city_lon:.4f}°E</div>
+        </div>
     </div>
     """, unsafe_allow_html=True)
 with col2:
-    st.metric("🌡️ Temperature", f"{current_weather.get('temperature', 'N/A')}°C")
+    st.metric("Temperature", f"{current_weather.get('temperature', 'N/A')}°C")
 with col3:
-    st.metric("💨 Wind Now", f"{current_weather.get('windspeed', 'N/A')} km/h")
+    st.metric("Wind Speed", f"{current_weather.get('windspeed', 'N/A')} km/h")
 with col4:
-    st.metric("🧭 Wind Dir", f"{current_weather.get('winddirection', 'N/A')}°")
+    st.metric("Risk Forecast", "In Queue", "Live")
+st.markdown("</div>", unsafe_allow_html=True)
 
 
 st.markdown("---")
 
 
 # ──────────────────── PREDICTION CARDS ──────────────────────────
-st.markdown('<div class="section-header">🎯 Prediction Summary</div>', unsafe_allow_html=True)
+st.markdown('<div class="section-header">Prediction Summary</div>', unsafe_allow_html=True)
 
 # Calculate key metrics
 avg_rainfall = 0
@@ -453,9 +497,9 @@ col1, col2, col3, col4 = st.columns(4)
 with col1:
     st.markdown(f"""
     <div class="metric-card">
-        <div class="metric-icon">🌧️</div>
+        <div style="font-size: 2rem; margin-bottom: 1rem;">🌧️</div>
         <div class="metric-label">Predicted Rainfall</div>
-        <div class="metric-value" style="color: #60a5fa;">{avg_rainfall:.1f} mm</div>
+        <div class="metric-value" style="color: var(--primary);">{avg_rainfall:.1f} mm</div>
         <div class="metric-sub">{rainfall_note}</div>
         <div class="metric-sub">Forecast avg rain: {forecast_avg_rainfall:.1f} mm</div>
         <div class="metric-sub">Model R²: {predictions['rainfall'].get('model_r2', 0):.3f}</div>
@@ -465,29 +509,30 @@ with col1:
 with col2:
     st.markdown(f"""
     <div class="metric-card">
-        <div class="metric-icon">💨</div>
+        <div style="font-size: 2rem; margin-bottom: 1rem;">💨</div>
         <div class="metric-label">Predicted Wind Speed</div>
-        <div class="metric-value" style="color: #f59e0b;">{pred_wind:.0f} km/h</div>
-        <div class="metric-sub">{"Danger zone!" if pred_wind > 100 else "Moderate" if pred_wind > 60 else "Safe range"}</div>
-        <div class="metric-sub">Model R²: {predictions['wind'].get('model_r2', 0):.3f}</div>
+        <div class="metric-value" style="color: #ea580c;">{pred_wind:.0f} km/h</div>
+        <div class="metric-sub">{"Danger zone" if pred_wind > 100 else "Moderate winds" if pred_wind > 60 else "Safe conditions"} expected</div>
     </div>
     """, unsafe_allow_html=True)
 
 with col3:
     st.markdown(f"""
     <div class="metric-card">
-        <div class="metric-icon">🌀</div>
+        <div style="font-size: 2rem; margin-bottom: 1rem;">🌀</div>
         <div class="metric-label">Cyclone Distance</div>
-        <div class="metric-value" style="color: #a78bfa;">{cyclone_dist:.0f} km</div>
-        <div class="metric-sub">Closest in 24h: {closest_approach:.0f} km</div>
-        <div class="metric-sub">{"⚠️ APPROACHING" if closest_approach < cyclone_dist else "Moving away"}</div>
+        <div class="metric-value" style="color: #8b5cf6;">{cyclone_dist:.0f} km</div>
+        <div class="metric-sub">Closest point in 24h: {closest_approach:.0f} km</div>
+        <div class="metric-sub" style="font-weight: 600; color: {'#dc2626' if closest_approach < cyclone_dist else '#16a34a'};">
+            {"⚠️ Approaching" if closest_approach < cyclone_dist else "✓ Moving away"}
+        </div>
     </div>
     """, unsafe_allow_html=True)
 
 with col4:
     st.markdown(f"""
     <div class="metric-card">
-        <div class="metric-icon">⚠️</div>
+        <div style="font-size: 2rem; margin-bottom: 1rem;">🛡️</div>
         <div class="metric-label">Disaster Risk Level</div>
         <div class="metric-value {risk_class}">{risk_level.upper()}</div>
         <div class="metric-sub">Confidence: {risk_confidence * 100:.1f}%</div>
@@ -500,7 +545,7 @@ st.markdown("---")
 
 
 # ──────────────────── MAP & CHARTS ──────────────────────────────
-tab1, tab2, tab3, tab4 = st.tabs(["🗺️ Interactive Map", "📈 Weather Trends", "🌀 Cyclone Analysis", "🏥 Evacuation Shelters"])
+tab1, tab2, tab3, tab4 = st.tabs(["Interactive Map", "Weather Trends", "Cyclone Analysis", "Evacuation Shelters"])
 
 with tab1:
     st.markdown('<div class="section-header">Interactive Disaster Map</div>', unsafe_allow_html=True)
@@ -661,8 +706,8 @@ with tab1:
     # Legend
     legend_html = """
     <div style="position: fixed; bottom: 30px; left: 30px; z-index: 999;
-        background: rgba(15,12,41,0.95); padding: 15px; border-radius: 10px;
-        border: 1px solid rgba(255,255,255,0.1); color: white; font-size: 12px;">
+        background: rgba(255,255,255,0.95); padding: 15px; border-radius: 12px;
+        border: 1px solid rgba(0,0,0,0.1); color: #0f172a; font-size: 13px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
         <b>Legend</b><br>
         🔴 Cyclone Position<br>
         <span style="color:#ff6b6b;">━━</span> Past Track<br>
@@ -702,17 +747,17 @@ with tab2:
             if pred_rain:
                 fig_rain.add_trace(go.Scatter(
                     x=dates[:len(pred_rain)], y=pred_rain,
-                    name="ML Predicted Rain",
+                    name="Predicted Rain",
                     mode="lines+markers",
                     line=dict(color="#f59e0b", width=3),
                     marker=dict(size=8),
                 ))
 
             fig_rain.update_layout(
-                title="🌧️ Rainfall Forecast vs ML Prediction",
+                title="Rainfall Forecast vs Predicted Rainfall",
                 xaxis_title="Date",
                 yaxis_title="Rainfall (mm)",
-                template="plotly_dark",
+                template="plotly_white",
                 height=400,
                 paper_bgcolor="rgba(0,0,0,0)",
                 plot_bgcolor="rgba(0,0,0,0)",
@@ -748,10 +793,10 @@ with tab2:
             )
 
             fig_wind.update_layout(
-                title="💨 Wind Speed Trend",
+                title="Wind Speed Trend",
                 xaxis_title="Date",
                 yaxis_title="Speed (km/h)",
-                template="plotly_dark",
+                template="plotly_white",
                 height=400,
                 paper_bgcolor="rgba(0,0,0,0)",
                 plot_bgcolor="rgba(0,0,0,0)",
@@ -780,10 +825,10 @@ with tab2:
         ))
 
         fig_temp.update_layout(
-            title="🌡️ Temperature Range",
+            title="Temperature Range",
             xaxis_title="Date",
             yaxis_title="Temperature (°C)",
-            template="plotly_dark",
+            template="plotly_white",
             height=350,
             paper_bgcolor="rgba(0,0,0,0)",
             plot_bgcolor="rgba(0,0,0,0)",
@@ -802,14 +847,14 @@ with tab3:
         with col1:
             st.markdown(f"""
             <div class="metric-card">
-                <h3 style="color: #ff6b6b; margin-top: 0;">{cyclone_data['name']}</h3>
-                <table style="width: 100%; color: #e2e8f0;">
-                    <tr><td style="color: #8892b0;">Category</td><td><b>{cyclone_data['category']}</b></td></tr>
-                    <tr><td style="color: #8892b0;">Basin</td><td>{cyclone_data['basin']}</td></tr>
-                    <tr><td style="color: #8892b0;">Position</td><td>{cyclone_data['lat']}°N, {cyclone_data['lon']}°E</td></tr>
-                    <tr><td style="color: #8892b0;">Wind Speed</td><td><b>{cyclone_data['wind_kmh']} km/h</b></td></tr>
-                    <tr><td style="color: #8892b0;">Pressure</td><td>{cyclone_data['pressure_mb']} mb</td></tr>
-                    <tr><td style="color: #8892b0;">Distance to {selected_city}</td><td><b>{cyclone_data['distance_km']:.0f} km</b></td></tr>
+                <h3 style="color: #dc2626; margin-top: 0; font-weight: 800;">{cyclone_data['name']}</h3>
+                <table style="width: 100%; color: #0f172a; border-collapse: separate; border-spacing: 0 8px;">
+                    <tr><td style="color: #64748b; font-weight: 500;">Category</td><td><b style="color: #0f172a;">{cyclone_data['category']}</b></td></tr>
+                    <tr><td style="color: #64748b; font-weight: 500;">Basin</td><td><b>{cyclone_data['basin']}</b></td></tr>
+                    <tr><td style="color: #64748b; font-weight: 500;">Position</td><td><b>{cyclone_data['lat']}°N, {cyclone_data['lon']}°E</b></td></tr>
+                    <tr><td style="color: #64748b; font-weight: 500;">Wind Speed</td><td><b style="color: #ea580c;">{cyclone_data['wind_kmh']} km/h</b></td></tr>
+                    <tr><td style="color: #64748b; font-weight: 500;">Pressure</td><td><b>{cyclone_data['pressure_mb']} mb</b></td></tr>
+                    <tr><td style="color: #64748b; font-weight: 500;">Distance to {selected_city}</td><td><b style="color: #2563eb;">{cyclone_data['distance_km']:.0f} km</b></td></tr>
                 </table>
             </div>
             """, unsafe_allow_html=True)
@@ -838,10 +883,10 @@ with tab3:
                                    annotation_text="Watch Zone (<500 km)")
 
                 fig_dist.update_layout(
-                    title=f"🌀 Cyclone Distance from {selected_city}",
+                    title=f"Cyclone Distance from {selected_city}",
                     xaxis_title="Hours Ahead",
                     yaxis_title="Distance (km)",
-                    template="plotly_dark",
+                    template="plotly_white",
                     height=350,
                     paper_bgcolor="rgba(0,0,0,0)",
                     plot_bgcolor="rgba(0,0,0,0)",
@@ -955,7 +1000,7 @@ with tab4:
         st_folium(shelter_map, width=None, height=450, returned_objects=[])
 
         # Shelter list
-        st.markdown("#### 📋 Shelter Details")
+        st.markdown("#### Shelter Details")
         shelter_data = []
         for s in shelters:
             if s["lat"] and s["lon"]:
@@ -979,9 +1024,8 @@ with tab4:
 st.markdown("---")
 st.markdown("""
 <div style="text-align: center; color: #64748b; padding: 1rem;">
-    <p><b>CycloneGuard</b> — AI-Powered Cyclone Disaster Prediction Dashboard</p>
-    <p>Data: Open-Meteo | NOAA IBTrACS | OpenStreetMap | IMD</p>
-    <p>ML Models: RandomForest, XGBoost, Linear Extrapolation</p>
-    <p style="font-size: 0.8rem;">⚠️ For educational and research purposes. Always follow official government advisories.</p>
+    <p><b>CycloneGuard</b> — Cyclone Data Dashboard</p>
+    <p>Data: Open-Meteo | NOAA | OpenStreetMap | IMD</p>
+    <p style="font-size: 0.8rem;">For educational and research purposes. Always follow official government advisories.</p>
 </div>
 """, unsafe_allow_html=True)

@@ -13,7 +13,7 @@ import pandas as pd
 from datetime import datetime
 
 BASE = os.path.dirname(os.path.abspath(__file__))
-MODELS_DIR = os.path.join(BASE, "models")
+MODELS_DIR = BASE
 
 
 def _load_model(name):
