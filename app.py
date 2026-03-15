@@ -42,6 +42,17 @@ from prediction_pipeline import (
     run_full_prediction,
 )
 
+# ──────────────────── DIAGNOSTICS & ERROR HANDLING ──────────────────
+try:
+    import pandas as pd
+    import numpy as np
+    import sklearn
+    import xgboost
+    import folium
+except Exception as e:
+    st.error(f"FATAL IMPORT ERROR: {e}")
+    st.stop()
+
 # ──────────────────── PAGE CONFIG ───────────────────────────────
 st.set_page_config(
     page_title="CycloneGuard - Disaster Prediction Dashboard",
