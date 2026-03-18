@@ -133,7 +133,7 @@ function App() {
 
       {!selectedCity || !dashboardData ? (
         <main className="welcome-screen">
-          <h2>Next-Generation Disaster Intelligence</h2>
+          <h2>Next-Generation Cyclone Intelligence</h2>
           <p>Protecting coastal communities through real-time ML-powered predictions. 
           Select a region from the top right to initialize the assessment protocol and view dynamic risk mapping.</p>
         </main>
@@ -146,7 +146,7 @@ function App() {
             <div className={`metric-card`} data-risk={dashboardData.predictions?.risk?.risk_level}>
               <div className="metric-header">
                 <div className="metric-icon"><ShieldCheck size={20} color="var(--text-primary)" /></div>
-                <span>Disaster Risk Level</span>
+                <span>Cyclone Risk Level</span>
               </div>
               <div>
                 <div className="metric-value">

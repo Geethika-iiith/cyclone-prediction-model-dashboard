@@ -1,12 +1,12 @@
-# Cyclone Guard: Predictive Disaster Intelligence
+# Cyclone Guard: Predictive Cyclone Intelligence
 ### Team Aftershock: Geethika Palla | Aniket Verma | Koustubh Jain
 
-CycloneGuard is an AI-powered disaster prediction dashboard designed for coastal communities. It combines machine learning models with real-time satellite telemetry to provide hyper-local risk assessments, weather forecasts, and evacuation shelter mapping.
+CycloneGuard is an AI-powered cyclone prediction dashboard designed for coastal communities. It combines machine learning models with real-time satellite telemetry to provide hyper-local risk assessments, weather forecasts, and evacuation shelter mapping.
 
 ## ✨ Project Highlights
-- **🌟 AI-Powered Risk Assessment**: Real-time disaster risk level prediction (Severe, High, Medium, Low) using weighted ML variables.
+- **🌟 AI-Powered Risk Assessment**: Real-time cyclone risk level prediction (Severe, High, Medium, Low) using weighted ML variables.
 - **📈 Predictive Analytics**: 7-day rainfall and wind speed forecasting powered by **XGBoost** and **Random Forest**.
-- **🗺️ Interactive Disaster Map**: Visualizes predicted cyclone tracks, city safety buffers, and nearest safe shelters.
+- **🗺️ Interactive Cyclone Map**: Visualizes predicted cyclone tracks, city safety buffers, and nearest safe shelters.
 - **🛰️ Live Data Integration**: Zero-latency fetching from Open-Meteo, NOAA/IBTrACS, and OpenStreetMap.
 - **💎 Vibrant UI/UX**: Professional "Midnight Indigo" theme featuring glassmorphism and motion design.
 

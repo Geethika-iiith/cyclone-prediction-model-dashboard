@@ -1,5 +1,5 @@
 """
-app.py — Cyclone Disaster Prediction Dashboard
+app.py — Cyclone Prediction Dashboard
 ────────────────────────────────────────────────
 A Streamlit-powered dashboard that combines ML predictions with
 real-time API data to provide cyclone risk assessment for Indian
@@ -55,7 +55,7 @@ except Exception as e:
 
 # ──────────────────── PAGE CONFIG ───────────────────────────────
 st.set_page_config(
-    page_title="CycloneGuard - Disaster Prediction Dashboard",
+    page_title="CycloneGuard - Cyclone Prediction Dashboard",
     page_icon="🌀",
     layout="wide",
     initial_sidebar_state="expanded",
@@ -289,7 +289,7 @@ def get_city_database():
 st.markdown("""
 <div class="main-header">
     <h1>Cyclone<span>Guard</span></h1>
-    <p>Predictive safety dashboard for coastal communities</p>
+    <p>Predictive Cyclone Intelligence</p>
 </div>
 """, unsafe_allow_html=True)
 
@@ -368,7 +368,7 @@ if selected_city is None:
     st.markdown("""
     <div style="text-align: center; padding: 6rem 1rem; background: rgba(255,255,255,0.4); border-radius: 40px; border: 1px solid rgba(255,255,255,0.7); backdrop-filter: blur(20px);">
         <h1 style="color: #0f172a; font-size: 3.5rem; font-weight: 800; letter-spacing: -0.05em; margin-bottom: 1.5rem;">
-            Secure Coastal <span>Intelligence</span>
+            Next-Generation Cyclone <span>Intelligence</span>
         </h1>
         <p style="color: #64748b; font-size: 1.3rem; max-width: 700px; margin: 0 auto 2.5rem; line-height: 1.6;">
             Empowering decision-makers with real-time AI modeling, satellite telemetry, and hyper-local risk assessment. Secure your community against the elements.
@@ -529,7 +529,7 @@ with col4:
     st.markdown(f"""
     <div class="metric-card">
         <div style="font-size: 2rem; margin-bottom: 1rem;">🛡️</div>
-        <div class="metric-label">Disaster Risk Level</div>
+        <div class="metric-label">Cyclone Risk Level</div>
         <div class="metric-value {risk_class}">{risk_level.upper()}</div>
         <div class="metric-sub">Confidence: {risk_confidence * 100:.1f}%</div>
         <div class="risk-bar"><div class="{risk_fill}"></div></div>
@@ -544,7 +544,7 @@ st.markdown("---")
 tab1, tab2, tab3, tab4 = st.tabs(["Interactive Map", "Weather Trends", "Cyclone Analysis", "Evacuation Shelters"])
 
 with tab1:
-    st.markdown('<div class="section-header">Interactive Disaster Map</div>', unsafe_allow_html=True)
+    st.markdown('<div class="section-header">Interactive Cyclone Map</div>', unsafe_allow_html=True)
 
     # Create Folium map
     m = folium.Map(
