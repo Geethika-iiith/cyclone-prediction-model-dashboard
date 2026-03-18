@@ -56,7 +56,7 @@ def search_city(q: str):
     raise HTTPException(status_code=404, detail="City not found")
 
 @app.get("/api/predict")
-def predict_disaster(city: str, lat: float, lon: float, pop_density: float = 10000, sim: bool = True):
+def predict_cyclone(city: str, lat: float, lon: float, pop_density: float = 10000, sim: bool = True):
     try:
         weather_data = fetch_weather_forecast(lat, lon, days=7)
         
