@@ -55,7 +55,7 @@ except Exception as e:
 
 # ──────────────────── PAGE CONFIG ───────────────────────────────
 st.set_page_config(
-    page_title="CycloneGuard - Disaster Prediction Dashboard",
+    page_title="CycloneGuard - cyclone Prediction Dashboard",
     page_icon="🌀",
     layout="wide",
     initial_sidebar_state="expanded",
@@ -255,7 +255,7 @@ def get_models():
 
 models = get_models()
 if "load_errors" in models:
-    st.error("⚠️ Some AI models failed to load. Predictions may be unavailable.")
+    st.error("⚠️ Some  models failed to load. Predictions may be unavailable.")
     with st.expander("Show Technical Details"):
         for err in models["load_errors"]:
             st.write(f"- {err}")
